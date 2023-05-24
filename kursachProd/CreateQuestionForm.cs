@@ -27,6 +27,8 @@ namespace kursachProd
             foreach (Control textBox in Controls.OfType<TextBox>())
                 createQuestions.AddAnswer(textBox.Text);
             JSONWrapper.Questions.Add(createQuestions);
+            foreach (Control textBox in Controls.OfType<TextBox>())
+                textBox.Text = string.Empty;
         }
 
         private void CreateQuestionForm_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
