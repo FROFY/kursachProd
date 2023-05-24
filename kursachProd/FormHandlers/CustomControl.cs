@@ -19,6 +19,11 @@ namespace kursachProd.FormHandlers
         public void Init()
         {
             GetLastControls();
+            if (getLastLabel.Text == "7")
+            {
+                MessageBox.Show("Maximum 7 elements");
+                return;
+            }
             AddControlToWindow(CreateCustomLabel(), CreateCustomTextBox());
         }
         private Control CreateCustomTextBox()
