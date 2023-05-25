@@ -16,10 +16,11 @@ namespace kursachProd
     public partial class CreateQuestionForm : Form
     {
         JSONWrapper JSONWrapper = new();
+        CustomControl CustomControl = new();
         public CreateQuestionForm()
         {
             InitializeComponent();
-            button2.Click += (s, e) => new CustomControl(this).Init();
+            button2.Click += (s, e) => CustomControl.Init(this);
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -29,6 +30,7 @@ namespace kursachProd
             JSONWrapper.Questions.Add(createQuestions);
             foreach (Control textBox in Controls.OfType<TextBox>())
                 textBox.Text = string.Empty;
+            CustomControl.Clear();
         }
 
         private void CreateQuestionForm_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();

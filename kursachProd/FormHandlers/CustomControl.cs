@@ -9,15 +9,19 @@ namespace kursachProd.FormHandlers
 {
     internal class CustomControl
     {
-        private Form form;
+        private Form? form;
+        private List<Control>? textBoxesList;
+        private List<Control>? labelList;
         private Control? getLastTextBox;
         private Control? getLastLabel;
-        public CustomControl(Form form) 
+        public CustomControl() 
+        {
+            textBoxesList = new List<Control>();
+            labelList = new List<Control>();
+        }
+        public void Init(Form form)
         {
             this.form = form;
-        }
-        public void Init()
-        {
             GetLastControls();
             if (getLastLabel.Text == "7")
             {
@@ -33,6 +37,7 @@ namespace kursachProd.FormHandlers
                 Location = new Point(getLastTextBox.Location.X, getLastTextBox.Location.Y + 29),
                 Size = getLastTextBox.Size
             };
+            addTextBoxToList(textBox);
             return textBox;
         }
         private Control CreateCustomLabel()
@@ -43,6 +48,7 @@ namespace kursachProd.FormHandlers
                 Location = new Point(getLastLabel.Location.X, getLastLabel.Location.Y + 29),
                 Size = getLastLabel.Size
             };
+            addLabelToList(label);
             return label;
         }
         private void GetLastControls()
@@ -57,6 +63,31 @@ namespace kursachProd.FormHandlers
         {
             form.Controls.Add(textBox);
             form.Controls.Add(label);
+        }
+        private void addTextBoxToList(Control textBox)
+        {
+            textBoxesList.Add(textBox);
+        }
+        private void addLabelToList(Control label)
+        {
+            labelList.Add(label);
+        }
+        private void RemoveBoxex()
+        {
+            foreach (Control control in textBoxesList)
+                form.Controls.Remove(control);
+        }
+        private void RemoveLabels()
+        {
+            foreach (Control control in labelList)
+                form.Controls.Remove(control);
+        }
+        public void Clear()
+        {
+            RemoveBoxex();
+            RemoveLabels();
+            textBoxesList?.Clear();
+            labelList?.Clear();
         }
     }
 }
