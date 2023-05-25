@@ -23,7 +23,7 @@ namespace kursachProd.FormHandlers
         {
             this.form = form;
             GetLastControls();
-            if (getLastLabel.Text == "7")
+            if (getLastLabel?.Text == "7")
             {
                 MessageBox.Show("Maximum 7 elements");
                 return;
@@ -53,34 +53,31 @@ namespace kursachProd.FormHandlers
         }
         private void GetLastControls()
         {
-            if (form != null)
-            {
-                getLastTextBox = form.Controls.OfType<TextBox>().ToList().MaxBy(x => x.Location.Y);
-                getLastLabel = form.Controls.OfType<Label>().ToList().MaxBy(x => x.Location.Y);
-            }
+            getLastTextBox = form?.Controls.OfType<TextBox>().ToList().MaxBy(x => x.Location.Y);
+            getLastLabel = form?.Controls.OfType<Label>().ToList().MaxBy(x => x.Location.Y);
         }
         private void AddControlToWindow(Control textBox, Control label)
         {
-            form.Controls.Add(textBox);
-            form.Controls.Add(label);
+            form?.Controls.Add(textBox);
+            form?.Controls.Add(label);
         }
         private void addTextBoxToList(Control textBox)
         {
-            textBoxesList.Add(textBox);
+            textBoxesList?.Add(textBox);
         }
         private void addLabelToList(Control label)
         {
-            labelList.Add(label);
+            labelList?.Add(label);
         }
         private void RemoveBoxex()
         {
             foreach (Control control in textBoxesList)
-                form.Controls.Remove(control);
+                form?.Controls.Remove(control);
         }
         private void RemoveLabels()
         {
             foreach (Control control in labelList)
-                form.Controls.Remove(control);
+                form?.Controls.Remove(control);
         }
         public void Clear()
         {
