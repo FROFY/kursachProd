@@ -1,4 +1,5 @@
 ﻿using kursachProd.AnswerTheQuestion;
+using kursachProd.Questions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,17 +14,21 @@ namespace kursachProd
 {
     public partial class AnswerTheQuestions : Form
     {
+        CreateControlBasedOnQuestions createQuestions;
+        int clickCount = 0;
         public AnswerTheQuestions()
         {
             InitializeComponent();
+            createQuestions = new(this);
+            createQuestions.Init();
         }
 
         private void AnswerTheQuestions_FormClosed(object sender, FormClosedEventArgs e) => Application.Exit();
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ((Control)sender).Hide();
-            new CreateControlBasedOnQuestions(this).Init();
+            //((Control)sender).Hide();
+            createQuestions.Create(clickCount++);
         }
     }
 }

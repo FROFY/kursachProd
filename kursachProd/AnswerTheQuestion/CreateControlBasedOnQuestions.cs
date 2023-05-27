@@ -11,6 +11,8 @@ namespace kursachProd.AnswerTheQuestion
     {
         private readonly Form? form;
         private JSONWrapper? JSONWrapper;
+        private List<string>? questions;
+        private List<string>? answers;
         public CreateControlBasedOnQuestions(Form form)
         {
             this.form = form;
@@ -18,12 +20,21 @@ namespace kursachProd.AnswerTheQuestion
         public void Init()
         {
             ReadJSON();
-            CreateCustomControl();
+            ParseQuestions();
+            //CreateCustomControl();
+            //CreateLabel();
         }
-        private void ReadJSON()
+        public void Create(int count)
         {
-            JSONWrapper = new JSON().Read();
+            if (!CheckMax(count))
+            {
+                CreateLabel();
+                return;
+            }
+            CreateLabel(GetIndex(count));
         }
+        public string GetIndex(int count) => questions[count];
+        private void ReadJSON() => JSONWrapper = new JSON().Read();
         private void CreateCustomControl()
         {
             RadioButton radioButton = new()
@@ -32,5 +43,27 @@ namespace kursachProd.AnswerTheQuestion
             };
             form?.Controls.Add(radioButton);
         }
+        private void CreateLabel(string labelText = "END")
+        {
+            ClearForm();
+            Label label = new()
+            {
+                Text = labelText,
+                Location = new Point(150, 30)
+            };
+            AddControlToForm(label);
+        }
+        private void ClearForm()
+        {
+            foreach (Control label in form.Controls.OfType<Label>())
+                form.Controls.Remove(label);
+        }
+        private bool CheckMax(int count) => questions.Count > count;
+        private void ParseQuestions()
+        {
+            questions = new List<string>();
+            JSONWrapper?.Questions.ForEach(body => { body.BodyQuestion.ForEach(question => { if (question.EndsWith('?')) questions.Add(question); }); });
+        }
+        private void AddControlToForm(Control control) => form?.Controls.Add(control);
     }
 }

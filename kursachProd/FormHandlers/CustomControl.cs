@@ -37,7 +37,7 @@ namespace kursachProd.FormHandlers
                 Location = new Point(getLastTextBox.Location.X, getLastTextBox.Location.Y + 29),
                 Size = getLastTextBox.Size
             };
-            addTextBoxToList(textBox);
+            AddTextBoxToList(textBox);
             return textBox;
         }
         private Control CreateCustomLabel()
@@ -48,7 +48,7 @@ namespace kursachProd.FormHandlers
                 Location = new Point(getLastLabel.Location.X, getLastLabel.Location.Y + 29),
                 Size = getLastLabel.Size
             };
-            addLabelToList(label);
+            AddLabelToList(label);
             return label;
         }
         private void GetLastControls()
@@ -61,11 +61,11 @@ namespace kursachProd.FormHandlers
             form?.Controls.Add(textBox);
             form?.Controls.Add(label);
         }
-        private void addTextBoxToList(Control textBox)
+        private void AddTextBoxToList(Control textBox)
         {
             textBoxesList?.Add(textBox);
         }
-        private void addLabelToList(Control label)
+        private void AddLabelToList(Control label)
         {
             labelList?.Add(label);
         }
