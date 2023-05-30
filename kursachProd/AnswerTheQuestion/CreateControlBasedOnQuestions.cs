@@ -30,11 +30,11 @@ namespace kursachProd.AnswerTheQuestion
                 return;
             }
             CreateLabel(GetIndex(count));
-            CreateCustomControl();
+            CreateCustomRadioButton();
         }
         public string GetIndex(int count) => questions[count];
         private void ReadJSON() => JSONWrapper = new JSON().Read();
-        private void CreateCustomControl()
+        private void CreateCustomRadioButton()
         {
             InitPoint();
             DeleteAllRadio();
@@ -44,7 +44,8 @@ namespace kursachProd.AnswerTheQuestion
                 {
                     Text = answer,
                     Location = point,
-                    Size = new Size(500, 30)
+                    MaximumSize = new Size(500, 500),
+                    AutoSize = true
                 };
                 AddControlToForm(radioButton);
                 AddPointValues();
@@ -59,7 +60,7 @@ namespace kursachProd.AnswerTheQuestion
             {
                 Text = labelText,
                 Location = new Point(150, 30),
-                Size = new Size(300,100)
+                AutoSize = true
             };
             AddControlToForm(label);
         }

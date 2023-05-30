@@ -57,6 +57,7 @@
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.button1);
             this.Name = "SeeQuestions";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SeeQuestions";
             this.ResumeLayout(false);
 

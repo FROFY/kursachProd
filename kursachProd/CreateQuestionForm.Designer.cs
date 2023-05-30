@@ -39,6 +39,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -136,11 +137,21 @@
             this.button4.Text = "Смотреть список вопросов";
             this.button4.UseVisualStyleBackColor = true;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(133, 390);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 42);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "Перейти к вопросам";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
             // CreateQuestionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(344, 451);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox3);
@@ -153,6 +164,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Name = "CreateQuestionForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateQuestionForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CreateQuestionForm_FormClosed);
             this.ResumeLayout(false);
@@ -173,5 +185,6 @@
         private Label label4;
         private Button button3;
         private Button button4;
+        private Button button5;
     }
 }

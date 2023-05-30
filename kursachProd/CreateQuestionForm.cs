@@ -22,6 +22,7 @@ namespace kursachProd
             InitializeComponent();
             button2.Click += (s, e) => CustomControl.Init(this);
             button4.Click += (s, e) => new SeeQuestions().Show();
+            button5.Click += (s, e) => new AnswerTheQuestions().Show();
         }
         private void button1_Click(object sender, EventArgs e)
         {
