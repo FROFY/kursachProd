@@ -29,10 +29,10 @@ namespace kursachProd.AnswerTheQuestion
                 DeleteAllRadio();
                 return;
             }
-            CreateLabel(GetIndex(count));
+            CreateLabel(GetIndex());
             CreateCustomRadioButton();
         }
-        public string GetIndex(int count) => questions[count];
+        public string GetIndex() => questions[count];
         private void ReadJSON() => JSONWrapper = new JSON().Read();
         private void CreateCustomRadioButton()
         {
@@ -79,13 +79,11 @@ namespace kursachProd.AnswerTheQuestion
             foreach (Control label in form.Controls.OfType<Label>())
                 form.Controls.Remove(label);
         }
-        private void DeleteAllRadio()
-        {
-            form?.Controls.OfType<RadioButton>().ToList().ForEach(form.Controls.Remove);
-        }
+        private void DeleteAllRadio() => form?.Controls.OfType<RadioButton>().ToList().ForEach(form.Controls.Remove);
         private void DeleteAllRadio1()
         {
-            foreach (Control radio in form.Controls.OfType<RadioButton>().ToList())
+            var test = form.Controls.OfType<RadioButton>().ToArray();
+            foreach (Control radio in test)
                 form.Controls.Remove(radio);
         }
         private bool CheckMax(int count) => questions?.Count > count;
