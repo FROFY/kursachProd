@@ -12,53 +12,78 @@ namespace kursachProd.AnswerTheQuestion
         private readonly Form? form;
         private JSONWrapper? JSONWrapper;
         private List<string>? questions;
-        private List<string>? answers;
-        public CreateControlBasedOnQuestions(Form form)
-        {
-            this.form = form;
-        }
+        private Point point;
+        private int count;
+        public CreateControlBasedOnQuestions(Form form) => this.form = form;
         public void Init()
         {
             ReadJSON();
             ParseQuestions();
-            //CreateCustomControl();
-            //CreateLabel();
         }
         public void Create(int count)
         {
+            this.count= count;
             if (!CheckMax(count))
             {
                 CreateLabel();
+                DeleteAllRadio();
                 return;
             }
             CreateLabel(GetIndex(count));
+            CreateCustomControl();
         }
         public string GetIndex(int count) => questions[count];
         private void ReadJSON() => JSONWrapper = new JSON().Read();
         private void CreateCustomControl()
         {
-            RadioButton radioButton = new()
+            InitPoint();
+            DeleteAllRadio();
+            GetCurrentAnswers().ForEach(answer => 
             {
-                Text = "Test"
-            };
-            form?.Controls.Add(radioButton);
+                RadioButton radioButton = new()
+                {
+                    Text = answer,
+                    Location = point,
+                    Size = new Size(500, 30)
+                };
+                AddControlToForm(radioButton);
+                AddPointValues();
+            });
         }
+        private void AddPointValues() => point.Y += 30;
+        private void InitPoint() => point = new Point(50, 50);
         private void CreateLabel(string labelText = "END")
         {
-            ClearForm();
+            DeleteAllLabels();
             Label label = new()
             {
                 Text = labelText,
-                Location = new Point(150, 30)
+                Location = new Point(150, 30),
+                Size = new Size(300,100)
             };
             AddControlToForm(label);
         }
-        private void ClearForm()
+        private List<string> GetCurrentAnswers()
+        {
+            List<string> currentAnswers = new();
+            JSONWrapper?.Questions.ForEach(quest =>
+            {
+                if (quest.BodyQuestion.Contains(GetIndex(count)))
+                    quest.BodyQuestion.ForEach(getAnswers => { if (!getAnswers.EndsWith('?')) currentAnswers.Add(getAnswers); });
+            });
+            return currentAnswers;
+        }
+        private void DeleteAllLabels()
         {
             foreach (Control label in form.Controls.OfType<Label>())
                 form.Controls.Remove(label);
         }
-        private bool CheckMax(int count) => questions.Count > count;
+        private void DeleteAllRadio()
+        {
+            foreach (Control radio in form.Controls.OfType<RadioButton>())
+                form.Controls.Remove(radio);
+        }
+        private bool CheckMax(int count) => questions?.Count > count;
         private void ParseQuestions()
         {
             questions = new List<string>();
