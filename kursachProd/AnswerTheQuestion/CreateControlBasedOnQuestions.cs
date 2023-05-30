@@ -80,7 +80,11 @@ namespace kursachProd.AnswerTheQuestion
         }
         private void DeleteAllRadio()
         {
-            foreach (Control radio in form.Controls.OfType<RadioButton>())
+            form?.Controls.OfType<RadioButton>().ToList().ForEach(form.Controls.Remove);
+        }
+        private void DeleteAllRadio1()
+        {
+            foreach (Control radio in form.Controls.OfType<RadioButton>().ToList())
                 form.Controls.Remove(radio);
         }
         private bool CheckMax(int count) => questions?.Count > count;
