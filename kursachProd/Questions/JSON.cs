@@ -25,8 +25,16 @@ namespace kursachProd.Questions
         /// <returns></returns>
         public JSONWrapper Read()
         {
-            string json = File.ReadAllText("file.json");
-            return JsonConvert.DeserializeObject<JSONWrapper>(json);
+            try
+            {
+                string json = File.ReadAllText("file.json");
+                return JsonConvert.DeserializeObject<JSONWrapper>(json);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не найден файл");
+                return new JSONWrapper();
+            }
         }
     }
 }

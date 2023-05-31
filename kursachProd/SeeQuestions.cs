@@ -26,7 +26,9 @@ namespace kursachProd
             deleteQuestion = new DeleteQuestion(this);
             deleteQuestion.Init();
             questions = deleteQuestion.GetQuestions();
-            questions.ForEach(question => { treeView1.Nodes.Add(question); });
+            if (questions == null)
+                MessageBox.Show("Список вопросов пуст. Создайте вопросы.");
+            questions?.ForEach(question => { treeView1.Nodes.Add(question); });
         }
         /// <summary>
         /// По нажатию кнопки удаляет вопрос из списка и заново сериализует
