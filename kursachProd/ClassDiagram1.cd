@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="kursachProd.FormHandlers.CustomControl">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQgAAAAIAEAAAAAgAAAAAAAIAAAAAFAAAQECAghABAA=</HashCode>
+      <FileName>FormHandlers\CustomControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kursachProd.Questions.Question">
+    <Position X="8" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Questions\Question.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kursachProd.AnswerTheQuestion.CreateControlBasedOnQuestions">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAYAACAMAAAQAAQBAABAACAAAQAAEAAAACCBAIQAAU=</HashCode>
+      <FileName>AnswerTheQuestion\CreateControlBasedOnQuestions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kursachProd.Questions.CreateQuestions">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Questions\CreateQuestions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kursachProd.Questions.JSON">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Questions\JSON.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kursachProd.Questions.JSONWrapper">
+    <Position X="16.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Questions\JSONWrapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kursachProd.AnswerTheQuestions">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAICACAACAAAIAAAAAEAABAAAAAA=</HashCode>
+      <FileName>AnswerTheQuestions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kursachProd.CreateQuestionForm">
+    <Position X="18.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAIAAAAECAAABAAAAKAAABCAMA4AAAAEFAAAAAAAAA=</HashCode>
+      <FileName>CreateQuestionForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kursachProd.DeleteQuestion">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAACCAAAAAA=</HashCode>
+      <FileName>DeleteQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kursachProd.Program">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kursachProd.SeeQuestions">
+    <Position X="11.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAACAAAAAAAACAAAACAAAIAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kursachProd.WelcomeForm">
+    <Position X="8" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAYAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
