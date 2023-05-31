@@ -8,7 +8,11 @@ namespace kursachProd.Questions
 {
     internal class JSONWrapper
     {
-        public JSONWrapper() => Questions = new List<Question>();
+        
         public List<Question> Questions { get; set; }
+        /// <summary>
+        /// Инициализирует контейнер с вопросами (главный элемент json)
+        /// </summary>
+        public JSONWrapper() => Questions = new List<Question>();
     }
 }

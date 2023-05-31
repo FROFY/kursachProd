@@ -14,22 +14,33 @@ namespace kursachProd.FormHandlers
         private List<Control>? labelList;
         private Control? getLastTextBox;
         private Control? getLastLabel;
+        /// <summary>
+        /// Конструктор. Инициализирует контейнеры для хранения контролов с формы
+        /// </summary>
         public CustomControl() 
         {
             textBoxesList = new List<Control>();
             labelList = new List<Control>();
         }
+        /// <summary>
+        /// Инициализация. Сохраняет форму. Получает последние контролы с формы. Проверяет на максимум элементов. Добавляет контролы на форму.
+        /// </summary>
+        /// <param name="form"></param>
         public void Init(Form form)
         {
             this.form = form;
             GetLastControls();
-            if (getLastLabel?.Text == "7")
+            if (CheckForMax())
             {
                 MessageBox.Show("Maximum 7 elements");
                 return;
             }
             AddControlToWindow(CreateCustomLabel(), CreateCustomTextBox());
         }
+        /// <summary>
+        /// Создание тексбокса для заполнения ответа
+        /// </summary>
+        /// <returns>Контрол типа TextBox</returns>
         private Control CreateCustomTextBox()
         {
             TextBox textBox = new()
@@ -40,6 +51,15 @@ namespace kursachProd.FormHandlers
             AddTextBoxToList(textBox);
             return textBox;
         }
+        /// <summary>
+        /// Проверка на максимум ответов
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckForMax() => getLastLabel?.Text == "7";
+        /// <summary>
+        /// Создание label для подписания элементов формы
+        /// </summary>
+        /// <returns>Контрол типа Label</returns>
         private Control CreateCustomLabel()
         {
             Label label = new()
@@ -51,34 +71,59 @@ namespace kursachProd.FormHandlers
             AddLabelToList(label);
             return label;
         }
+        /// <summary>
+        /// Получает последние контролы типа TextBox и Label по максимальной координате Y
+        /// </summary>
         private void GetLastControls()
         {
             getLastTextBox = form?.Controls.OfType<TextBox>().ToList().MaxBy(x => x.Location.Y);
             getLastLabel = form?.Controls.OfType<Label>().ToList().MaxBy(x => x.Location.Y);
         }
+        /// <summary>
+        /// Добавлет контролы на форму
+        /// </summary>
+        /// <param name="textBox"></param>
+        /// <param name="label"></param>
         private void AddControlToWindow(Control textBox, Control label)
         {
             form?.Controls.Add(textBox);
             form?.Controls.Add(label);
         }
+        /// <summary>
+        /// Кидаем в контейнер добавленные контролы
+        /// </summary>
+        /// <param name="textBox"></param>
         private void AddTextBoxToList(Control textBox)
         {
             textBoxesList?.Add(textBox);
         }
+        /// <summary>
+        /// Кидаем в контейнер добавленные контролы
+        /// </summary>
+        /// <param name="textBox"></param>
         private void AddLabelToList(Control label)
         {
             labelList?.Add(label);
         }
+        /// <summary>
+        /// Удаляем с формы все варианты ответов
+        /// </summary>
         private void RemoveBoxex()
         {
             foreach (Control control in textBoxesList)
                 form?.Controls.Remove(control);
         }
+        /// <summary>
+        /// Удаляем с формы все подписи контролов
+        /// </summary>
         private void RemoveLabels()
         {
             foreach (Control control in labelList)
                 form?.Controls.Remove(control);
         }
+        /// <summary>
+        /// Метод очистки формы
+        /// </summary>
         public void Clear()
         {
             RemoveBoxex();

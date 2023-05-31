@@ -16,6 +16,10 @@ namespace kursachProd
         List<string>? questions;
         JSONWrapper json;
         DeleteQuestion deleteQuestion;
+        /// <summary>
+        /// Конструктор Инициализирует переменные и вызывает инициализацию объекта для удаления вопросов.
+        /// Также заполняет форму вопросами для выбора
+        /// </summary>
         public SeeQuestions()
         {
             InitializeComponent();
@@ -24,7 +28,11 @@ namespace kursachProd
             questions = deleteQuestion.GetQuestions();
             questions.ForEach(question => { treeView1.Nodes.Add(question); });
         }
-
+        /// <summary>
+        /// По нажатию кнопки удаляет вопрос из списка и заново сериализует
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             deleteQuestion.GetJSON().Questions.RemoveAt(treeView1.SelectedNode.Index);

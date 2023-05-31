@@ -18,8 +18,19 @@ namespace kursachProd
             json = new JSON().Read();
             this.form = form;
         }
+        /// <summary>
+        /// Инициализация. Заполяет контейнер вопросами
+        /// </summary>
         public void Init() => json?.Questions.ForEach(x => { x.BodyQuestion.ForEach(y => { if (y.EndsWith('?')) questions?.Add(y); }); });
+        /// <summary>
+        /// Возвращает вопросы
+        /// </summary>
+        /// <returns>Контейнер с вопросами</returns>
         public List<string> GetQuestions() => questions;
+        /// <summary>
+        /// Возвращает обертку json
+        /// </summary>
+        /// <returns></returns>
         public JSONWrapper GetJSON() => json;
     }
 }

@@ -10,6 +10,9 @@ namespace kursachProd.Questions
     internal class Question
     {
         public List<string> BodyQuestion { get; set; }
+        /// <summary>
+        /// Инициализирует контейнер
+        /// </summary>
         public Question() => BodyQuestion = new List<string>();
     }
 }
