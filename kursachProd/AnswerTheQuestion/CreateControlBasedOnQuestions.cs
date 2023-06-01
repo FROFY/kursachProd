@@ -27,6 +27,8 @@ namespace kursachProd.AnswerTheQuestion
         {
             ReadJSON();
             ParseQuestions();
+            if (!CheckMax(count))
+                CreateMessageBox();
         }
         /// <summary>
         /// Вывод вопроса на экран.
@@ -37,13 +39,16 @@ namespace kursachProd.AnswerTheQuestion
         /// <param name="count">Счетчик нажатий кнопки</param>
         public void Create(int count)
         {
-            if (!IsCheckedRadioButton())
-                return;
             this.count = count;
+            if (!IsCheckedRadioButton())
+            {
+                MessageBox.Show("Не выбран ответ");
+                return;
+            }    
             RenameButton();
-            IsCheckedRadioButton();
             if (!CheckMax(count))
             {
+                DeleteButton();
                 CreateLabel();
                 DeleteAllRadio();
                 return;
@@ -60,6 +65,10 @@ namespace kursachProd.AnswerTheQuestion
         /// Десериализация (чтение файла)
         /// </summary>
         private void ReadJSON() => JSONWrapper = new JSON().Read();
+        private void DeleteButton()
+        {
+            form?.Controls.OfType<Button>().ToList().ForEach(form.Controls.Remove);
+        }
         /// <summary>
         /// Создание радиокнопки для выбора вопроса
         /// </summary>
@@ -106,6 +115,7 @@ namespace kursachProd.AnswerTheQuestion
             };
             AddControlToForm(label);
         }
+        private void CreateMessageBox() => MessageBox.Show("Список вопросов пуст");
         /// <summary>
         /// Достает ответы на вопрос
         /// </summary>
@@ -126,11 +136,15 @@ namespace kursachProd.AnswerTheQuestion
         /// <returns></returns>
         private bool IsCheckedRadioButton()
         {
+            int count = 0;
             foreach (RadioButton control in form.Controls.OfType<RadioButton>().ToList())
             {
+                count++;
                 if (control.Checked)
                     return true;
             }
+            if (count <= 0)
+                return true;
             return false;
         }
         /// <summary>

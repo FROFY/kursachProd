@@ -28,7 +28,14 @@ namespace kursachProd
         {
             CreateQuestions createQuestions = new();
             foreach (Control textBox in Controls.OfType<TextBox>())
+            {
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    MessageBox.Show("Не введены все ответы");
+                    return;
+                }
                 createQuestions.AddAnswer(textBox.Text);
+            }    
             JSONWrapper.Questions.Add(createQuestions);
             foreach (Control textBox in Controls.OfType<TextBox>())
                 textBox.Text = string.Empty;

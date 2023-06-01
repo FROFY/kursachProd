@@ -27,7 +27,6 @@ namespace kursachProd
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //((Control)sender).Hide();
             createQuestions.Create(clickCount++);
         }
     }

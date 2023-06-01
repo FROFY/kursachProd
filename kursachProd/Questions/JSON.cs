@@ -27,8 +27,7 @@ namespace kursachProd.Questions
         {
             try
             {
-                string json = File.ReadAllText("file.json");
-                return JsonConvert.DeserializeObject<JSONWrapper>(json);
+                return JsonConvert.DeserializeObject<JSONWrapper>(File.ReadAllText("file.json"));
             }
             catch (Exception)
             {
